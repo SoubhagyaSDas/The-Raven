@@ -28,6 +28,22 @@ const PostsWidget = ({ userId, isProfile = false }) => {
     const data = await response.json();
     dispatch(setPosts({ posts: data }));
   };
+  const deletePost = async (postId) => {
+    const response = await fetch(`http://localhost:3001/posts/${postId}`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    if (response.ok) {
+      // Update state to reflect the deletion
+      dispatch(
+        setPosts({ posts: posts.filter((post) => post._id !== postId) })
+      );
+    } else {
+      // Handle error
+      console.error("Failed to delete the post");
+    }
+  };
 
   useEffect(() => {
     if (isProfile) {
@@ -63,6 +79,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
             userPicturePath={userPicturePath}
             likes={likes}
             comments={comments}
+            onDelete={() => deletePost(_id)}
           />
         )
       )}
