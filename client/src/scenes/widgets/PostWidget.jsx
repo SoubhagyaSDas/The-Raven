@@ -3,6 +3,7 @@ import {
   FavoriteBorderOutlined,
   FavoriteOutlined,
   ShareOutlined,
+  DeleteOutline,
 } from "@mui/icons-material";
 import { Box, Divider, IconButton, Typography, useTheme } from "@mui/material";
 import FlexBetween from "components/FlexBetween";
@@ -22,6 +23,7 @@ const PostWidget = ({
   userPicturePath,
   likes,
   comments,
+  onDelete,
 }) => {
   const [isComments, setIsComments] = useState(false);
   const dispatch = useDispatch();
@@ -45,6 +47,19 @@ const PostWidget = ({
     });
     const updatedPost = await response.json();
     dispatch(setPost({ post: updatedPost }));
+  };
+  const handleDelete = async () => {
+    const response = await fetch(`http://localhost:3001/posts/${postId}`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${token}` },
+      "Content-Type": "application/json",
+    }).then((response) => console.log(response));
+
+    if (response.ok) {
+      onDelete && onDelete(postId);
+    } else {
+      console.error("Failed to delete the post");
+    }
   };
 
   return (
@@ -91,6 +106,11 @@ const PostWidget = ({
         <IconButton>
           <ShareOutlined />
         </IconButton>
+        {loggedInUserId === postUserId && (
+          <IconButton onClick={handleDelete}>
+            <DeleteOutline />
+          </IconButton>
+        )}
       </FlexBetween>
       {isComments && (
         <Box mt="0.5rem">

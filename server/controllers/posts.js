@@ -71,3 +71,27 @@ export const likePost = async (req, res) => {
     res.status(404).json({ message: err.message });
   }
 };
+
+/* DELETE */
+export const deletePost = async (req, res) => {
+  console.log("delete");
+  try {
+    const { postId } = req.params;
+    console.log(postId);
+    const post = await Post.findById(postId);
+
+    if (!post) {
+      return res.status(404).send("Post not found");
+    }
+
+    // Optional: Verify if the user deleting the post is the owner of the post
+    // if (req.userId !== post.userId.toString()) {
+    //   return res.status(403).send("Unauthorized to delete this post");
+    // }
+
+    await Post.findByIdAndDelete(postId);
+    res.status(200).send("Post deleted successfully");
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
