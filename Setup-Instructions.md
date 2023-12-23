@@ -64,7 +64,3 @@ Follow these steps to set up and run the application:
 
 3. **User Login**
    - Log in using the newly created user's email and password.
-
----
-
-For more information or if you encounter issues, please check the project documentation or contact the support team.
