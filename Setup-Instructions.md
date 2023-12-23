@@ -16,7 +16,7 @@ Follow these steps to set up and run the application:
    - Add the following content to the `.env` file:
      ```
      MONGO_URL=mongodb://localhost:27017
-     JWT_SECRET=asdfsdfsdasfd
+     JWT_SECRET=fsociety
      PORT=3001
      ```
 
