@@ -7,7 +7,7 @@ services:
     startCommand: cd server && npm start
     envVars:
       - key: MONGO_URL
-        value: mongodb+srv://ssd1:#Soubhagya8763@cluster0.hzba1vr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+        value: mongodb+srv://ssd1:#Soubhagya8763@cluster0.lwnscp9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
       - key: JWT_SECRET
         value: your_jwt_secret_key_here
       - key: NODE_ENV
