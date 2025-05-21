@@ -30,6 +30,8 @@ const store = configureStore({
     }),
 });
 
+const baseUrl = process.env.REACT_APP_API_URL || "http://localhost:3001";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>

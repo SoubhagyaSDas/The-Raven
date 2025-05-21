@@ -1,46 +1,103 @@
-# Project Technology Stack Overview
+# Technologies Used
 
-This document provides an overview of the technologies used in our project. We have adopted the MERN stack with additional libraries and frameworks to enhance our application's functionality and performance.
+This project is a full-stack social networking application built with the **MERN** stack and enhanced with modern libraries and best practices for scalability, security, and user experience.
 
-## Front-End Technologies
+---
 
-### React
-- **Usage**: Primary front-end framework.
-- **Features**: Offers a robust platform for building interactive user interfaces.
+## Frontend
 
-### React Router
-- **Usage**: Managing navigation within the application.
-- **Features**: Enables dynamic routing in a web app.
+- **React**  
+  Modern JavaScript library for building user interfaces.
 
-### Form Handling and Validation
-- **Formik**: Simplifies form handling with easy-to-use hooks.
-- **Yup**: Works alongside Formik for schema-based form validation.
+- **Material UI (MUI)**  
+  Provides a rich set of accessible, customizable UI components.
 
-### State Management
-- **Redux Toolkit**: Streamlines state management in React applications.
-- **Redux Persist**: Enhances Redux by allowing state persistence and rehydration.
+- **Redux Toolkit & Redux Persist**  
+  State management and persistence for seamless user experience.
 
-### Image Uploads
-- **React Dropzone**: Provides a flexible solution for drag-and-drop file uploading.
+- **React Router DOM**  
+  Declarative routing for single-page applications.
 
-## Back-End Technologies
+- **Formik & Yup**  
+  Form state management and schema-based validation.
 
-### Node.js
-- **Usage**: Server-side runtime environment.
-- **Features**: Facilitates back-end JavaScript execution.
+- **React Dropzone**  
+  Drag-and-drop file uploads for user profile pictures and posts.
 
-### Express.js
-- **Usage**: Back-end web application framework.
-- **Features**: Offers a robust set of features for web and mobile applications.
+- **Custom Components & Architecture**  
+  - Modular component structure (`components/`, `scenes/`, `widgets/`)
+  - Reusable UI elements (e.g., `UserImage`, `Friend`, `WidgetWrapper`)
+  - Theming and responsive design via MUI and custom `theme.js`
 
-### Database Management
-- **Mongoose**: Object Data Modeling (ODM) library for MongoDB.
-- **Features**: Simplifies interaction with MongoDB databases.
+---
 
-### Authentication and File Upload
-- **JSON Web Token (JWT)**: Implements token-based authentication.
-- **Multer**: Middleware for handling multipart/form-data, used for file uploads.
+## Backend
 
-## Conclusion
+- **Node.js & Express.js**  
+  RESTful API server with robust routing and middleware support.
 
-Our choice of technologies reflects our commitment to building a scalable, efficient, and user-friendly web application. By leveraging the strengths of each technology, we aim to deliver a seamless and dynamic user experience.
+- **MongoDB & Mongoose**  
+  NoSQL database with schema modeling and validation.
+
+- **JWT (JSON Web Token)**  
+  Secure authentication and authorization.
+
+- **Multer**  
+  Handles file uploads (profile images, post images).
+
+- **Helmet & Morgan**  
+  Security headers and HTTP request logging.
+
+- **CORS & Body-Parser**  
+  Cross-origin resource sharing and JSON parsing.
+
+- **Custom Middleware & Controllers**  
+  - Authentication middleware (`auth.js`)
+  - Modular controllers for users, posts, authentication, and messaging
+
+---
+
+## Messaging & Real-Time Features
+
+- **Custom Message Model**  
+  Enables direct messaging between users, with chat history stored in MongoDB.
+
+- **RESTful Messaging Endpoints**  
+  Fetch and send messages between friends.
+
+---
+
+## Deployment & Environment
+
+- **Environment Variables**  
+  Managed via `.env` for sensitive configuration (MongoDB URI, JWT secret, etc.).
+
+- **Production Build Support**  
+  Express serves the React build in production mode.
+
+- **Ready for Cloud Hosting**  
+  Designed for deployment on platforms like Render, with MongoDB Atlas integration.
+
+---
+
+## Development & Tooling
+
+- **Nodemon**  
+  Auto-restarts the server during development.
+
+- **ESLint & EditorConfig**  
+  (Add if present) For code consistency and linting.
+
+- **Git**  
+  Version control with `.gitignore` for node modules and environment files.
+
+---
+
+## Summary
+
+This stack was chosen to deliver a modern, scalable, and maintainable social platform. The architecture supports modular development, robust security, and a seamless user experience, both on desktop and mobile.
+
+---
+
+**Tip:**  
+For more details on setup and deployment, see `Setup-Instructions.md`.
