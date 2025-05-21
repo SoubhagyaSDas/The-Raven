@@ -12,13 +12,17 @@ services:
         sync: false
       - key: NODE_ENV
         value: production
+      - key: PORT
+        value: 3001
 
   # Frontend service
   - type: web
     name: the-raven-frontend
-    env: static
+    env: node
     buildCommand: cd client && npm install && npm run build
     startCommand: cd client && npx serve -s build
     envVars:
       - key: REACT_APP_API_URL
-        value: https://the-raven-backend.onrender.com 
+        value: https://the-raven-backend.onrender.com
+      - key: PORT
+        value: 3000 
