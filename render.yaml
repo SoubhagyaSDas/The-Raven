@@ -6,21 +6,19 @@ services:
     buildCommand: cd server && npm install
     startCommand: cd server && npm start
     envVars:
-      - key: NODE_ENV
-        value: production
-      - key: PORT
-        value: 3001
-      - key: MONGODB_URI
+      - key: MONGO_URL
         sync: false
       - key: JWT_SECRET
         sync: false
+      - key: NODE_ENV
+        value: production
 
   # Frontend service
   - type: web
     name: the-raven-frontend
-    env: node
+    env: static
     buildCommand: cd client && npm install && npm run build
-    startCommand: cd client && serve -s build
+    startCommand: cd client && npx serve -s build
     envVars:
       - key: REACT_APP_API_URL
         value: https://the-raven-backend.onrender.com 

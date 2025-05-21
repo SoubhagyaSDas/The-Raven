@@ -60,24 +60,18 @@ app.use("/posts", postRoutes);
 app.use("/messages", messageRoutes);
 
 /* MONGOOSE SETUP */
-const PORT = process.env.PORT || 3001;
-mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    serverSelectionTimeoutMS: 5000,
-    socketTimeoutMS: 45000,
-  })
+const MONGO_URL = process.env.MONGO_URL || "mongodb://localhost:27017/the-raven";
+mongoose.connect(MONGO_URL)
   .then(() => {
-    console.log('Connected to MongoDB successfully');
-    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+    console.log("Connected to MongoDB successfully");
+    app.listen(process.env.PORT || 3001, () => console.log(`Server Port: ${process.env.PORT || 3001}`));
 
     /* ADD DATA ONE TIME */
     // User.insertMany(users);
     // Post.insertMany(posts);
   })
   .catch((error) => {
-    console.error('MongoDB connection error:', error);
+    console.log("MongoDB connection error:", error);
     process.exit(1);
   });
 
