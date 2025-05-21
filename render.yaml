@@ -7,9 +7,9 @@ services:
     startCommand: cd server && npm start
     envVars:
       - key: MONGO_URL
-        sync: false
+        value: mongodb+srv://soubhagyadas:1234567890@cluster0.mongodb.net/the-raven?retryWrites=true&w=majority
       - key: JWT_SECRET
-        sync: false
+        value: your_jwt_secret_key_here
       - key: NODE_ENV
         value: production
       - key: PORT
